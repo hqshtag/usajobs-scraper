@@ -265,6 +265,8 @@ class Usajobs_Scraper_Admin
 		$name  = 'usajob_initial_jobs';
 		echo '<select name="' . $name . '">';
 		echo '<option value="42" selected: >--None--</option>';
+		//echo '<option value="10" selected: >10</option>';
+
 		for ($i = 20; $i <= 100; $i += 20) {
 			echo '<option value="' . $i . '"' . (get_option($name) == $i ? 'selected' : '') . '>' . $i . '</option>';
 		}
