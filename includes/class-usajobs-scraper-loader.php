@@ -83,7 +83,7 @@ class Usajobs_Scraper_Loader
 	{
 		$update = false;
 		$init = false;
-		$number = 42;
+		$number = 101;
 		//var_dump(get_option('usajob_initial_jobs'));
 		if (get_option('usajob_initial_jobs') <= 100 && !get_option('usajobs_scraper_once_01')) {
 			$init = true;
