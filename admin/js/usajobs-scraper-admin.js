@@ -36,8 +36,10 @@ if (ujsUpdater.last_update) {
 		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 		// Display the result in the element with id="demo"
-		document.getElementById('ujs-update-timer').innerHTML =
-			hours + ':' + minutes + ':' + seconds + ' until next update';
+		if (document.getElementById('ujs-update-timer')) {
+			document.getElementById('ujs-update-timer').innerHTML =
+				hours + ':' + minutes + ':' + seconds + ' until next update';
+		}
 
 		// If the count down is finished, write some text
 		if (distance < 0) {

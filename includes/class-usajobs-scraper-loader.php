@@ -85,12 +85,12 @@ class Usajobs_Scraper_Loader
 		$init = false;
 		$number = 101;
 		//var_dump(get_option('usajob_initial_jobs'));
-		if (get_option('usajob_initial_jobs') <= 100 && !get_option('usajobs_scraper_once_01')) {
+		if (get_option('usajob_initial_jobs') &&  !get_option('usajobs_scraper_once_01')) {
 			$init = true;
 			$number  = get_option('usajob_initial_jobs');
 			update_option('usajobs_scraper_once_01', 'completed');
 			update_option('usajobs_scraper_update_timer', time());
-		} else {
+		} else if (get_option('usajobs_scraper_update_timer')) {
 			$currentTime = time();
 			if ($currentTime > 86400 + get_option('usajobs_scraper_update_timer')) { //108000sec = 30hours
 				$how_long = $currentTime - get_option('usajobs_scraper_update_timer');
