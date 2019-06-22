@@ -83,8 +83,8 @@ class Usajobs_Scraper_Loader
 	{
 		$update = false;
 		$init = false;
-		$number = 101;
-		var_dump(get_option('usajob_initial_jobs'));
+		$number = 42;
+		//var_dump(get_option('usajob_initial_jobs'));
 		if (get_option('usajob_initial_jobs') <= 100 && !get_option('usajobs_scraper_once_01')) {
 			$init = true;
 			$number  = get_option('usajob_initial_jobs');
@@ -95,6 +95,7 @@ class Usajobs_Scraper_Loader
 			if ($currentTime > 86400 + get_option('usajobs_scraper_update_timer')) { //108000sec = 30hours
 				$how_long = $currentTime - get_option('usajobs_scraper_update_timer');
 				$number = floor($how_long / 3600 / 24);
+				//$number = 1;
 				$update = true;
 				$init = true;
 				update_option('usajobs_scraper_update_timer', time());

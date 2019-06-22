@@ -42,6 +42,7 @@ if (ujsUpdater.last_update) {
 		// If the count down is finished, write some text
 		if (distance < 0) {
 			clearInterval(x);
+			location.reload();
 			document.getElementById('ujs-update-timer').innerHTML = 'Update in progress';
 		}
 	}, 1000);
