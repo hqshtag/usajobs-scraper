@@ -102,7 +102,7 @@ class Usajobs_Scraper_Loader
 			}
 		}
 
-		$api = 'http://' . $_SERVER['HTTP_HOST'];
+		$api = 'https://' . $_SERVER['HTTP_HOST'];
 		if (preg_match('/localhost/', $api)) {
 			$api = "$api/wordpress";
 		}
