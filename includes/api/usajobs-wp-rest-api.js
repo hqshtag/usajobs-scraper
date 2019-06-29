@@ -209,6 +209,9 @@ if (init && number != 42) {
 		})
 		.then(() => {
 			adder.init();
+		})
+		.then(() => {
+			location.reload();
 		});
 }
 
