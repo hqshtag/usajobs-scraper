@@ -67,7 +67,6 @@ class Usajobs_Scraper_Loader
 
 	public function get_job_type_map()
 	{
-
 		return
 			[
 				'1' => get_option('usajobs_scraper_type_full_time'),
@@ -102,7 +101,12 @@ class Usajobs_Scraper_Loader
 			}
 		}
 
-		$api = 'https://' . $_SERVER['HTTP_HOST'];
+
+		$prefix = 'http';
+		if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+			$prefix = 'https';
+		}
+		$api = $prefix . '://' . $_SERVER['HTTP_HOST'];
 		if (preg_match('/localhost/', $api)) {
 			$api = "$api/wordpress";
 		}

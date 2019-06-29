@@ -187,15 +187,20 @@ class Usajobs_Scraper_Admin
 	public function prepare_job_type_mapping_options()
 	{
 		$this->jobTypes = $this->get_available_job_types();
-		$this->jobTypes = json_decode($this->jobTypes['body']);
-		$this->jobtype_settings = [
-			'full_time' =>  get_option('usajobs_scraper_type_full_time'),
-			'part_time' =>  get_option('usajobs_scraper_type_part_time'),
-			'shift_work' =>  get_option('usajobs_scraper_type_shift_work'),
-			'intermittent' =>  get_option('usajobs_scraper_type_intermittent'),
-			'job_share' =>  get_option('usajobs_scraper_type_job_share'),
-			'multiple_schedules' =>  get_option('usajobs_scraper_multiple_schedules'),
-		];
+		if (is_wp_error($this->jobTypes)) {
+			$error = $this->jobTypes->get_error_message();
+			echo '<div id="message" class="error"><p>' . $error . '</p></div>';
+		} else {
+			$this->jobTypes = json_decode($this->jobTypes['body']);
+			$this->jobtype_settings = [
+				'full_time' =>  get_option('usajobs_scraper_type_full_time'),
+				'part_time' =>  get_option('usajobs_scraper_type_part_time'),
+				'shift_work' =>  get_option('usajobs_scraper_type_shift_work'),
+				'intermittent' =>  get_option('usajobs_scraper_type_intermittent'),
+				'job_share' =>  get_option('usajobs_scraper_type_job_share'),
+				'multiple_schedules' =>  get_option('usajobs_scraper_multiple_schedules'),
+			];
+		}
 	}
 
 	public function setup_job_type_mapping()
@@ -282,12 +287,16 @@ class Usajobs_Scraper_Admin
 
 
 	/**
-	 * gets jobs types from wp api
+	 * gets job types from wp api
 	 * @since 1.0.1
 	 */
 	public function get_available_job_types()
 	{
-		$api = 'http://' . $_SERVER['HTTP_HOST'];
+		$prefix = 'http';
+		if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+			$prefix = 'https';
+		}
+		$api = $prefix . '://' . $_SERVER['HTTP_HOST'];
 		if (preg_match("/localhost/", $api)) {
 			$api = "$api/wordpress";
 		}

@@ -27,6 +27,9 @@
     if (get_option('usajob_initial_jobs')) {
         echo '<div>
                 <h4 id="ujs-update-timer"></h4>
+              </div>
+              <div>
+                <h4 id="error"></h4>
               </div>';
     }
     ?>
