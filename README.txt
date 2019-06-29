@@ -3,6 +3,7 @@
 Donate link: https://wajihtagourty.ml/
 Tags: comments, spam
 Requires at least: 3.0.1
+Requires PHP: 7+
 Tested up to: 5.2
 Stable tag: 4.3
 License: GPLv2 or later

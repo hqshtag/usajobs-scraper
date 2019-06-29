@@ -41,6 +41,16 @@ if (!defined('USAJOBS_SCRAPER_PATH')) {
 	define('USAJOBS_SCRAPER_PATH', plugin_dir_path(__FILE__));
 }
 
+
+require USAJOBS_SCRAPER_PATH . '/plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/kikinass/usajobs-scraper/',
+	__FILE__,
+	'usajobs-scraper'
+);
+$updateChecker->setBranch('master');
+
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-usajobs-scraper-activator.php
