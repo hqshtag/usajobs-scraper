@@ -148,7 +148,7 @@ if (init && number != 42) {
 			</div>
 			</br>
 			<div class="job_application application">
-				<a href="${link}" target="_blank" class="application_button button job-apply-button">Apply for job</a>
+				<a href="${link}" target="_blank" class="application_button button job-apply-button"><button id="ujs-apply-button">Apply for job</button></a>
 			</div>
 			`;
 		};
