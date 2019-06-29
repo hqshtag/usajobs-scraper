@@ -48,7 +48,7 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	__FILE__,
 	'usajobs-scraper'
 );
-$updateChecker->setBranch('master');
+$myUpdateChecker->setBranch('master');
 
 
 /**
