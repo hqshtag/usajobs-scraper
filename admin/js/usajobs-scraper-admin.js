@@ -44,7 +44,9 @@ if (ujsUpdater.last_update) {
 		// If the count down is finished, write some text
 		if (distance <= 0) {
 			clearInterval(x);
-			location.reload();
+			if (!magicalData.init) {
+				location.reload();
+			}
 			if (document.getElementById('ujs-update-timer')) {
 				document.getElementById('ujs-update-timer').innerHTML = 'Update in progress';
 			}
