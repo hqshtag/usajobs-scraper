@@ -16,7 +16,7 @@
  * Plugin Name:       USAjobs Scraper
  * Plugin URI:        https://github.com/kikinass/usajobs-scraper
  * Description:       scraper: fetch and parse job-ads from usajobs-dot-gov and add them to job listings; Requires WP Job Manager.
- * Version:           1.0.0
+ * Version:           1.5.0
  * Author:            Wajih
  * Author URI:        https://wajihtagourty.ml/
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('USAJOBS_SCRAPER_VERSION', '1.0.0');
+define('USAJOBS_SCRAPER_VERSION', '1.5.0');
 
 if (!defined('USAJOBS_SCRAPER_PATH')) {
 	define('USAJOBS_SCRAPER_PATH', plugin_dir_path(__FILE__));
@@ -91,7 +91,6 @@ require plugin_dir_path(__FILE__) . 'includes/class-usajobs-scraper.php';
  */
 function run_usajobs_scraper()
 {
-	setlocale(LC_MONETARY, 'en_US.UTF-8');
 	$plugin = new Usajobs_Scraper();
 	$plugin->run();
 }
